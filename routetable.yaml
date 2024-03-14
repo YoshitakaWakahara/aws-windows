@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Routetable, Route, RouteAssociation for windows" 
+Resources: 
+  RouteTableForWindows:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !ImportValue VpcForWindows
+      Tags:
+        - Key: Name 
+          Value: RouteTableForWindows 
+  RouteForWindows:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref RouteTableForWindows 
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !ImportValue IgwForWindows
+
+  RouteTableAssociationForWindows:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !ImportValue PublicSubnetForWindows 
+      RouteTableId: !Ref RouteTableForWindows

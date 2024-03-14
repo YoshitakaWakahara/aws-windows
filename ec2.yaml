@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "EC2 for windows" 
+Resources: 
+  Ec2ForWindows:
+    Type: AWS::EC2::Instance
+    Properties:
+      # Windows Server 2019 Japanese
+      ImageId: "ami-027a63125bb60c403"
+      InstanceType: t2.micro
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/sda1
+          Ebs:
+            VolumeType: gp2
+            DeleteOnTermination: false
+            VolumeSize: 30
+      KeyName: KeyPairForWindows 
+      SecurityGroupIds:
+        - !ImportValue SecurityGroupForWindows
