@@ -7,4 +7,5 @@
 3. igw.yaml
 4. routetable.yaml
 5. sg.yaml
-6. ec2.yaml
+6. iam.yaml
+7. ec2.yaml

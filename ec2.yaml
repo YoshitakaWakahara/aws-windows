@@ -5,8 +5,8 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       AvailabilityZone: "ap-northeast-1a"
-      # Windows_Server-2019-Japanese-Full-Base-2024.02.14
-      ImageId: "ami-038926bb07dddbcfc"
+      # Windows_Server-2022-Japanese-Full-Base-2023.11.15
+      ImageId: "ami-0ccf1fea52470bfb0"
       InstanceType: "t2.micro"
       NetworkInterfaces:
         - AssociatePublicIpAddress: "true"
@@ -21,3 +21,4 @@ Resources:
             DeleteOnTermination: true
             VolumeSize: 30
       KeyName: "KeyPairForWindows"
+      IamInstanceProfile: !ImportValue "IamRoleForWindows" 
