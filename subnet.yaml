@@ -15,4 +15,4 @@ Outputs:
     Description: "Public Subnet ID for Windows"
     Value: !Ref "PublicSubnetForWindows" 
     Export:
-      Name: !Sub "${AWS::StackName}-PublicSubnetForWindowsId"
+      Name: "PublicSubnetForWindows"

@@ -21,4 +21,4 @@ Outputs:
     Description: "Security Group ID for Windows"
     Value: !Ref "SecurityGroupForWindows" 
     Export:
-      Name: !Sub "${AWS::StackName}-SecurityGroupForWindowsId"
+      Name: "SecurityGroupForWindows"

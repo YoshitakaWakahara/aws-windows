@@ -4,9 +4,16 @@ Resources:
   Ec2ForWindows:
     Type: "AWS::EC2::Instance"
     Properties:
-      # Windows Server 2019 Japanese
-      ImageId: "ami-027a63125bb60c403"
+      AvailabilityZone: "ap-northeast-1a"
+      # Windows_Server-2019-Japanese-Full-Base-2024.02.14
+      ImageId: "ami-038926bb07dddbcfc"
       InstanceType: "t2.micro"
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          SubnetId: !ImportValue "PublicSubnetForWindows"
+          GroupSet:
+          - !ImportValue "SecurityGroupForWindows"
       BlockDeviceMappings:
         - DeviceName: "/dev/sda1"
           Ebs:
@@ -14,5 +21,3 @@ Resources:
             DeleteOnTermination: true
             VolumeSize: 30
       KeyName: "KeyPairForWindows"
-      SecurityGroupIds:
-        - !ImportValue "SecurityGroupForWindows"

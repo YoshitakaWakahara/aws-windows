@@ -17,4 +17,4 @@ Outputs:
     Description: "Internet Gateway ID for Windows"
     Value: !Ref "IgwForWindows"
     Export:
-      Name: !Sub "${AWS::StackName}-IgwForWindowsId"
+      Name: "IgwForWindows"

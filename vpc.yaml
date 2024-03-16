@@ -14,4 +14,4 @@ Outputs:
     Description: "VPC ID for Windows"
     Value: !Ref "VpcForWindows"
     Export:
-      Name: !Sub "${AWS::StackName}-VpcForWindowsId"
+      Name: !Sub "VpcForWindows"
