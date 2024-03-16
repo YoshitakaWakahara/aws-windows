@@ -22,3 +22,10 @@ Resources:
             VolumeSize: 30
       KeyName: "KeyPairForWindows"
       IamInstanceProfile: !ImportValue "IamRoleForWindows" 
+      UserData:
+        Fn::Base64: |
+          <powershell>
+          # SSM エージェントのインストール
+          Invoke-WebRequest -Uri "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/windows_amd64/AmazonSSMAgentSetup.exe" -OutFile "$env:TEMP\AmazonSSMAgentSetup.exe"
+          Start-Process -FilePath "$env:TEMP\AmazonSSMAgentSetup.exe" -ArgumentList "/quiet" -Wait
+          </powershell>
