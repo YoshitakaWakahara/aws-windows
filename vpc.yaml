@@ -1,16 +1,17 @@
-AWSTemplateFormatVersion: 2010-09-09
-Description: "VPC for windows" 
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "VPC for Windows"
 Resources:
   VpcForWindows:
-    Type: AWS::EC2::VPC
+    Type: "AWS::EC2::VPC"
     Properties:
-      CidrBlock: 10.0.0.0/16
+      CidrBlock: "10.0.0.0/16"
       EnableDnsSupport: true
       Tags:
-        - Key: Name 
-          Value: VpcForWindows 
+        - Key: "Name"
+          Value: "VpcForWindows"
 Outputs:
-  VpcForWindows:
-    Value: !Ref VpcForWindows
+  VpcForWindowsId:
+    Description: "VPC ID for Windows"
+    Value: !Ref "VpcForWindows"
     Export:
-      Name: VpcForWindows
+      Name: !Sub "${AWS::StackName}-VpcForWindowsId"

@@ -1,19 +1,20 @@
-AWSTemplateFormatVersion: 2010-09-09
-Description: "Internet gateway for windows" 
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Internet gateway for Windows" 
 Resources:
   IgwForWindows:
-    Type: AWS::EC2::InternetGateway
+    Type: "AWS::EC2::InternetGateway"
     Properties:
       Tags:
-        - Key: Name 
-          Value: InternetGatewayForWindows 
+        - Key: "Name"
+          Value: "InternetGatewayForWindows" 
   AttachGateway:
-    Type: AWS::EC2::VPCGatewayAttachment
+    Type: "AWS::EC2::VPCGatewayAttachment"
     Properties:
-      VpcId: !ImportValue VpcForWindows
-      InternetGatewayId: !Ref IgwForWindows 
+      VpcId: !ImportValue "VpcForWindows"
+      InternetGatewayId: !Ref "IgwForWindows"
 Outputs:
-  IgwForWindows:
-    Value: !Ref IgwForWindows
+  IgwForWindowsId:
+    Description: "Internet Gateway ID for Windows"
+    Value: !Ref "IgwForWindows"
     Export:
-      Name: IgwForWindows
+      Name: !Sub "${AWS::StackName}-IgwForWindowsId"

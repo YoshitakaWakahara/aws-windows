@@ -1,23 +1,24 @@
-AWSTemplateFormatVersion: 2010-09-09
-Description: "Security Group for windows"
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Security Group for Windows"
 Resources: 
   SecurityGroupForWindows:
-    Type: AWS::EC2::SecurityGroup
+    Type: "AWS::EC2::SecurityGroup"
     Properties:
-      GroupName: SecurityGroupForWindows
-      GroupDescription: SecurityGroupForWindows 
-      VpcId: !ImportValue VpcForWindows
+      GroupName: "SecurityGroupForWindows"
+      GroupDescription: "Security Group for Windows" 
+      VpcId: !ImportValue "VpcForWindows"
       SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-          CidrIp: 0.0.0.0/0
+        - IpProtocol: "tcp"
+          FromPort: "80"
+          ToPort: "80"
+          CidrIp: "0.0.0.0/0"
+        - IpProtocol: "tcp"
+          FromPort: "22"
+          ToPort: "22"
+          CidrIp: "0.0.0.0/0"
 Outputs:
-  SecurityGroupForWindows:
-    Value: !Ref SecurityGroupForWindows 
+  SecurityGroupForWindowsId:
+    Description: "Security Group ID for Windows"
+    Value: !Ref "SecurityGroupForWindows" 
     Export:
-      Name: SecurityGroupForWindows 
+      Name: !Sub "${AWS::StackName}-SecurityGroupForWindowsId"
