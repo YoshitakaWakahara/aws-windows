@@ -2,16 +2,16 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "VPC for Windows"
 Resources:
   VpcForWindows:
-    Type: "AWS::EC2::VPC"
+    Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: "10.0.0.0/16"
+      CidrBlock: 10.0.0.0/16
       EnableDnsSupport: true
       Tags:
-        - Key: "Name"
-          Value: "VpcForWindows"
+        - Key: Name
+          Value: VpcForWindows
 Outputs:
   VpcForWindowsId:
     Description: "VPC ID for Windows"
-    Value: !Ref "VpcForWindows"
+    Value: !Ref VpcForWindows
     Export:
-      Name: !Sub "VpcForWindows"
+      Name: !Sub VpcForWindows

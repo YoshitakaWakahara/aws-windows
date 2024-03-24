@@ -17,9 +17,18 @@ Resources:
       Path: /
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  IamInstanceProfileForWindows:
+      Type: AWS::IAM::InstanceProfile
+      Properties:
+          Path: /
+          InstanceProfileName: "IamInstanceProfileForWindows" 
+          Roles:
+            - !Ref IamRoleForWindows
 Outputs:
-  IanRoleForWindowsId:
-    Description: "Iam Role ID for Windows"
-    Value: !Ref "IamRoleForWindows" 
+  IamInstanceProfile:
+    Description: "Iam Instance Profile for Windows"
+    Value: !Ref IamInstanceProfileForWindows
     Export:
-      Name: "IamRoleForWindows"
+      Name: IamInstanceProfileForWindows
+ 

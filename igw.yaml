@@ -2,19 +2,19 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "Internet gateway for Windows" 
 Resources:
   IgwForWindows:
-    Type: "AWS::EC2::InternetGateway"
+    Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
-        - Key: "Name"
-          Value: "InternetGatewayForWindows" 
+        - Key: Name
+          Value: InternetGatewayForWindows
   AttachGateway:
-    Type: "AWS::EC2::VPCGatewayAttachment"
+    Type: AWS::EC2::VPCGatewayAttachment
     Properties:
-      VpcId: !ImportValue "VpcForWindows"
-      InternetGatewayId: !Ref "IgwForWindows"
+      VpcId: !ImportValue VpcForWindows
+      InternetGatewayId: !Ref IgwForWindows
 Outputs:
   IgwForWindowsId:
     Description: "Internet Gateway ID for Windows"
-    Value: !Ref "IgwForWindows"
+    Value: !Ref IgwForWindows
     Export:
-      Name: "IgwForWindows"
+      Name: IgwForWindows

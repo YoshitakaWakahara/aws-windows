@@ -2,26 +2,26 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "EC2 for Windows" 
 Resources: 
   Ec2ForWindows:
-    Type: "AWS::EC2::Instance"
+    Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: "ap-northeast-1a"
+      AvailabilityZone: ap-northeast-1a
       # Windows_Server-2022-Japanese-Full-Base-2023.11.15
-      ImageId: "ami-0ccf1fea52470bfb0"
-      InstanceType: "t2.micro"
+      ImageId: ami-0ccf1fea52470bfb0
+      InstanceType: t2.micro
       NetworkInterfaces:
-        - AssociatePublicIpAddress: "true"
-          DeviceIndex: "0"
-          SubnetId: !ImportValue "PublicSubnetForWindows"
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !ImportValue PublicSubnetForWindows
           GroupSet:
-          - !ImportValue "SecurityGroupForWindows"
+          - !ImportValue SecurityGroupForWindows
       BlockDeviceMappings:
-        - DeviceName: "/dev/sda1"
+        - DeviceName: /dev/sda1
           Ebs:
-            VolumeType: "gp2"
+            VolumeType: gp2
             DeleteOnTermination: true
             VolumeSize: 30
-      KeyName: "KeyPairForWindows"
-      IamInstanceProfile: !ImportValue "IamRoleForWindows" 
+      KeyName: KeyPairForWindows
+      IamInstanceProfile: !ImportValue IamInstanceProfileForWindows 
       UserData:
         Fn::Base64: |
           <powershell>

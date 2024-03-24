@@ -2,17 +2,17 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "Subnet for Windows"
 Resources: 
   PublicSubnetForWindows:
-    Type: "AWS::EC2::Subnet"
+    Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: "ap-northeast-1a"
-      VpcId: !ImportValue "VpcForWindows"
-      CidrBlock: "10.0.0.0/24"
+      AvailabilityZone: ap-northeast-1a
+      VpcId: !ImportValue VpcForWindows
+      CidrBlock: 10.0.0.0/24
       Tags:
-        - Key: "Name" 
-          Value: "PublicSubnetForWindows" 
+        - Key: Name 
+          Value: PublicSubnetForWindows
 Outputs:
   PublicSubnetForWindowsId:
     Description: "Public Subnet ID for Windows"
-    Value: !Ref "PublicSubnetForWindows" 
+    Value: !Ref PublicSubnetForWindows
     Export:
-      Name: "PublicSubnetForWindows"
+      Name: PublicSubnetForWindows
