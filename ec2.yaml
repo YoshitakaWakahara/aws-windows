@@ -7,7 +7,7 @@ Resources:
       AvailabilityZone: ap-northeast-1a
       # Windows_Server-2022-Japanese-Full-Base-2023.11.15
       ImageId: ami-0ccf1fea52470bfb0
-      InstanceType: t2.micro
+      InstanceType: t3.small
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: 0
@@ -28,4 +28,8 @@ Resources:
           # SSM エージェントのインストール
           Invoke-WebRequest -Uri "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/windows_amd64/AmazonSSMAgentSetup.exe" -OutFile "$env:TEMP\AmazonSSMAgentSetup.exe"
           Start-Process -FilePath "$env:TEMP\AmazonSSMAgentSetup.exe" -ArgumentList "/quiet" -Wait
+           # Steamインストーラーをダウンロード
+          Invoke-WebRequest -Uri "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe" -OutFile "C:\temp\SteamSetup.exe"
+          # Steamをインストール
+          Start-Process -FilePath "C:\temp\SteamSetup.exe" -ArgumentList "/S" -Wait
           </powershell>
